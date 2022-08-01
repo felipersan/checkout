@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Checkout from "./pages/checkout";
+import { createGlobalStyle } from "styled-components";
+import { Helmet } from "react-helmet";
+
+const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    list-style: none;
+  }
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <link
+          href="https://rsms.me/inter/inter.css"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <GlobalStyle/>
+      <Checkout/>
+    </>
   );
 }
 
