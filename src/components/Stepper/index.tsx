@@ -5,7 +5,7 @@ import { StepperContext, SteeperContextType } from "../../contexts/Stepper";
 
 interface IStep{
     steps: number[],
-    labels: any[]
+    labels: any[],
 }
 
 export default function Stepper({steps, labels}:IStep){
@@ -18,7 +18,7 @@ export default function Stepper({steps, labels}:IStep){
         <>
             {numberSteps?.map((e: any)=>{
                 return(
-                    <S.Container>
+                    <S.Container key={e} >
                         <S.Circle>
                             {stepLevel > e+1 ? (
                                 <S.Finished><p>✔</p></S.Finished>
