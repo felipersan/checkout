@@ -10,6 +10,8 @@ export interface SteeperContextType {
     setStepLevel: Dispatch<SetStateAction<any>>,
     numberSteps: any,
     setNumberSteps: Dispatch<SetStateAction<any>>
+    formAdress: any,
+    setFormAdress: Dispatch<SetStateAction<any>>
 }
 
 export const StepperContext = createContext<any>(null)
@@ -17,6 +19,7 @@ export const StepperContext = createContext<any>(null)
 export default function StepperProvider({children} : IChildren ) {
     const [stepLevel, setStepLevel] = useState(1);
     const [numberSteps, setNumberSteps] = useState()
+    const [formAdress, setFormAdress] = useState()
 
     return(
         <StepperContext.Provider
@@ -24,7 +27,9 @@ export default function StepperProvider({children} : IChildren ) {
                 stepLevel: stepLevel as Number,
                 setStepLevel: setStepLevel as Dispatch<SetStateAction<number>>,
                 numberSteps: numberSteps as any,
-                setNumberSteps: setNumberSteps as Dispatch<SetStateAction<any>>
+                setNumberSteps: setNumberSteps as Dispatch<SetStateAction<any>>,
+                formAdress: formAdress as any,
+                setFormAdress: setFormAdress as Dispatch<SetStateAction<any>>
             }}
         >
             {children}
