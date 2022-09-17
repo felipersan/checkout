@@ -1,13 +1,18 @@
 import { router } from "./Routes";
 import { RouterProvider } from "react-router-dom";
 import { StrictMode } from "react";
+import { StepProvider } from "./Contexts/Steps";
 
 function App() {
   return (
     <div className="App">
-      <StrictMode>
-        <RouterProvider router={router} />
-      </StrictMode>
+      <div>
+        <StrictMode>
+          <StepProvider>
+            <RouterProvider router={router} />
+          </StepProvider>
+        </StrictMode>
+      </div>
     </div>
   );
 }
