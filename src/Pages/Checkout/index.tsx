@@ -1,3 +1,10 @@
+import { Stepper } from "../../Components/Stepper"
+import * as S from './styles'
+
 export const Checkout = () => {
-  return <>oi</>
+  return (
+    <S.Container>
+      <Stepper/>
+    </S.Container>
+  )
 }
