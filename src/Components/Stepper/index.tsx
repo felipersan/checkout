@@ -4,7 +4,7 @@ import * as S from "./styles";
 import { FaCheck } from "react-icons/fa";
 
 export const Stepper = () => {
-  const { stepLevel, setStepLevel } = useContext(StepContext);
+  const { stepLevel } = useContext(StepContext);
   return (
     <S.Container>
       {stepLevel < 1 ? (
