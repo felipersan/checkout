@@ -1,16 +1,21 @@
-import { createContext, FC, useState } from "react";
+import { createContext, FC, ReactNode, useState } from "react";
 
 interface IProps {
-  children: any;
+  children: ReactNode;
 }
 
-export const StepContext = createContext({});
+export const StepContext = createContext<any>({});
 
 export const StepProvider: FC<IProps> = ({ children }) => {
   const [stepLevel, setStepLevel] = useState(0);
 
   return (
-    <StepContext.Provider value={{ stepLevel, setStepLevel }}>
+    <StepContext.Provider
+      value={{
+        stepLevel,
+        setStepLevel
+      }}
+    >
       {children}
     </StepContext.Provider>
   );
