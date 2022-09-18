@@ -2,6 +2,7 @@ import { router } from "./Routes";
 import { RouterProvider } from "react-router-dom";
 import { StrictMode } from "react";
 import { StepProvider } from "./Contexts/Steps";
+import { GlobalStyle } from "./Styles/globalStyle";
 
 function App() {
   return (
@@ -9,7 +10,10 @@ function App() {
       <div>
         <StrictMode>
           <StepProvider>
-            <RouterProvider router={router} />
+            <>
+              <GlobalStyle/>
+              <RouterProvider router={router} />
+            </>
           </StepProvider>
         </StrictMode>
       </div>
