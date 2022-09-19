@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-two: #EFF0F7;
     --color-three: #F9FAFB;
     --color-four: rgba(0, 0, 0, 0.5);
+    --color-five: #101828;
   }
   *{
     margin: 0;
