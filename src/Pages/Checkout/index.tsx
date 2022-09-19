@@ -3,6 +3,7 @@ import * as S from './styles'
 import { Title } from "../../Components/Title"
 import { useContext } from "react"
 import { StepContext } from "../../Contexts/Steps"
+import { BillingAdress } from "../../Components/BillingAdress"
 
 export const Checkout = () => {
 
@@ -51,7 +52,7 @@ export const Checkout = () => {
         />
       )}
       <Stepper />
-      {stepLevel === 0 && <>componente</>}
+      {stepLevel === 0 && <BillingAdress/>}
       {stepLevel === 1 && <>componente</>}
       {stepLevel === 2 && <>componente</>}
       {stepLevel === 3 && <>componente</>}
