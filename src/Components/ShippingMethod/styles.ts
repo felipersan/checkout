@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
+interface IProps {
+  bg?: string;
+  p?: string;
+}
+
 export const Container = styled.section`
   width: 37rem;
-  height: 38rem;
+  height: 24rem;
   box-shadow: 12px 12px 36px 6px rgba(2, 2, 70, 0.12);
   border-radius: 24.2622px;
   margin-top: 3rem;
@@ -15,10 +20,7 @@ export const Container = styled.section`
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
-    color: var(--color-one);
-  }
-  label{
-    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
   @media (max-width: 600px) {
     width: 90%;
@@ -26,52 +28,36 @@ export const Container = styled.section`
   }
 `
 
-export const GridName = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 2rem;
-  margin-top: 1.5rem;
-  div{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: 1.5rem;
-  }
-`
-
-export const ContainerInput = styled.div`
-  margin-top: 1rem;
+export const MethodContainer = styled.div<IProps>`
+  width: 100%;
+  padding: 1.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`
-
-export const CheckboxContainer = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  label{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.8rem;
-    color: #344054;
-  }
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  cursor: pointer;
+  border-radius: 6.21522px;
+  background-color: ${({ bg }) => bg};
+  color: ${({ p }) => p};
+  border: 0.388451px solid;
+  border-color: var(--color-four);
+  margin: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
   input{
-    border: 0.775px solid #D0D5DD;
-    border-radius: 3.1px;
-    height: 0.8rem;
-    outline-color: #D0D5DD;
+    width: 0.971rem;
+    border-color: var(--color-two);
     cursor: pointer;
   }
-`
-
-export const ContainerCheckbox = styled.div`
-  margin-top: 1rem;
+  span{
+    color: var(--color-one);
+    font-weight: bold;
+  }
+  p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.777rem;
+  }
 `
 
 export const NextContainer = styled.div`

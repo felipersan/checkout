@@ -4,6 +4,7 @@ import { Title } from "../../Components/Title"
 import { useContext } from "react"
 import { StepContext } from "../../Contexts/Steps"
 import { BillingAdress } from "../../Components/BillingAdress"
+import { ShippingMethod } from "../../Components/ShippingMethod"
 
 export const Checkout = () => {
 
@@ -52,8 +53,8 @@ export const Checkout = () => {
         />
       )}
       <Stepper />
-      {stepLevel === 0 && <BillingAdress/>}
-      {stepLevel === 1 && <>componente</>}
+      {stepLevel === 0 && <BillingAdress />}
+      {stepLevel === 1 && <ShippingMethod />}
       {stepLevel === 2 && <>componente</>}
       {stepLevel === 3 && <>componente</>}
       {stepLevel === 4 && <>componente</>}

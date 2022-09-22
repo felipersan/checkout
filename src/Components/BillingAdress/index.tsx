@@ -1,14 +1,15 @@
-import * as S from './styles'
-import { Input } from '../Input/styles';
-import { Select } from '../Select';
-import NortonIcon from '../../assets/NortonIcon.svg'
+import * as S from "./styles";
+import { Input } from "../Input/styles";
+import { Select } from "../Select";
+import NortonIcon from "../../assets/NortonIcon.svg";
 import { BsArrowRightShort } from "react-icons/bs";
-import { useContext } from 'react';
-import { StepContext } from '../../Contexts/Steps';
+import { useContext } from "react";
+import { StepContext } from "../../Contexts/Steps";
 
 export const BillingAdress = () => {
-
+  
   const { setStepLevel } = useContext(StepContext);
+
   return (
     <S.Container>
       <h3>Billing Adress</h3>
@@ -119,8 +120,15 @@ export const BillingAdress = () => {
       </S.ContainerCheckbox>
       <S.NextContainer>
         <img src={NortonIcon} />
-        <button onClick={() => {setStepLevel(1)}}>Next<BsArrowRightShort/></button>
+        <button
+          onClick={() => {
+            setStepLevel(1);
+          }}
+        >
+          Next
+          <BsArrowRightShort />
+        </button>
       </S.NextContainer>
     </S.Container>
   );
-}
+};
