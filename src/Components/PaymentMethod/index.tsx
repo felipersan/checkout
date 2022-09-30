@@ -5,6 +5,8 @@ import VisaIcon from "../../assets/VisaIcon.svg";
 import StripeIcon from "../../assets/StripeIcon.svg";
 import MastercardIcon from "../../assets/MastercardIcon.svg";
 import ApplePay from "../../assets/ApplePay.svg";
+import PayPal from "../../assets/PayPal.svg";
+import PadlockIcon from "../../assets/PadlockIcon.svg";
 import { useContext, useState } from 'react';
 import { StepContext } from '../../Contexts/Steps';
 import { Input } from '../Input/styles';
@@ -69,7 +71,7 @@ export const PaymentMethod = () => {
                 />
               </S.FlexColumn>
               <S.FlexColumn>
-                <label>Name on card</label>
+                <label>Expiry</label>
                 <Input
                   boxShadow="0px 0.778215px 1.55643px rgba(16, 24, 40, 0.05)"
                   borderRadius="6.22572px"
@@ -133,7 +135,7 @@ export const PaymentMethod = () => {
           <div>
             <S.FlexSpaceBetween>
               <p>
-                <span>Pay with Credit Card</span>
+                <span>Apple Pay</span>
               </p>
               <S.FlexGap width="1.5rem !important">
                 <img src={ApplePay} />
@@ -167,15 +169,25 @@ export const PaymentMethod = () => {
           <div>
             <S.FlexSpaceBetween>
               <p>
-                <span>Pay with Credit Card</span>
+                <span>Paypal</span>
               </p>
               <S.FlexGap width="1.5rem !important">
-                <img src={ApplePay} />
+                <img src={PayPal} />
               </S.FlexGap>
             </S.FlexSpaceBetween>
-            <p>Unlimited users and unlimited individual data.</p>
+            <p>
+              You will be redirected to the PayPal website after submitting your
+              order
+            </p>
           </div>
         </S.MethodContainer>
+        <S.FlexSpaceEvenly>
+          <img src={PadlockIcon} />
+          <p>
+            We protect your payment information using encryption to provide
+            bank-level security.
+          </p>
+        </S.FlexSpaceEvenly>
         <S.NextContainer>
           <img src={NortonIcon} />
           <button

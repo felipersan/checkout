@@ -6,6 +6,7 @@ import { StepContext } from "../../Contexts/Steps"
 import { BillingAdress } from "../../Components/BillingAdress"
 import { ShippingMethod } from "../../Components/ShippingMethod"
 import { PaymentMethod } from "../../Components/PaymentMethod"
+import { ConfirmOrder } from "../../Components/ConfirmOrder"
 
 export const Checkout = () => {
 
@@ -57,7 +58,7 @@ export const Checkout = () => {
       {stepLevel === 0 && <BillingAdress />}
       {stepLevel === 1 && <ShippingMethod />}
       {stepLevel === 2 && <PaymentMethod />}
-      {stepLevel === 3 && <>componente</>}
+      {stepLevel === 3 && <ConfirmOrder />}
       {stepLevel === 4 && <>componente</>}
     </S.Container>
   );

@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-three: #F9FAFB;
     --color-four: rgba(0, 0, 0, 0.5);
     --color-five: #101828;
+    --color-six: #828282;
   }
   *{
     margin: 0;
@@ -17,4 +18,4 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
   }
-`
+`;

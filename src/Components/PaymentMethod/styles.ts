@@ -103,19 +103,29 @@ export const FlexSpaceBetween = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-`
+  @media (max-width: 445px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`;
 
 export const FlexGap = styled.div<IProps>`
-  width: ${({ width }) => width ? width : '7rem !important'};
+  width: ${({ width }) => (width ? width : "7rem !important")};
   gap: 0.5rem;
   display: flex;
   align-items: center;
   margin-left: -2rem;
-  img{
+  img {
     width: 2.238rem;
     height: 1.556rem;
   }
-`
+  @media (max-width: 445px) {
+    margin-left: 0;
+    img{
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
 
 export const FlexColumn = styled.div`
   display: flex;
@@ -127,10 +137,37 @@ export const GridTwoColumns = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
   margin-top: 1.5rem;
-  label{
+  label {
     margin-bottom: 0.5rem;
   }
-  input{
+  input {
     cursor: text;
   }
-`
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 0;
+    input {
+      size: 100%;
+    }
+  }
+`;
+
+export const FlexSpaceEvenly = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  img {
+    width: 1.7rem;
+    min-width: 1.7rem;
+  }
+  p {
+    color: var(--color-six);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.73rem;
+  }
+`;
