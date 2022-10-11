@@ -54,7 +54,7 @@ export const Checkout = () => {
           }
         />
       )}
-      <Stepper />
+      {stepLevel < 4 && <Stepper />}
       {stepLevel === 0 && <BillingAdress />}
       {stepLevel === 1 && <ShippingMethod />}
       {stepLevel === 2 && <PaymentMethod />}

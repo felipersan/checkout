@@ -34,17 +34,6 @@ export const Container = styled.section`
   }
 `;
 
-export const FlexColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const Cardsontainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`
-
 export const FlexWithGap = styled.div`
   display: flex;
   gap: 0.5rem;
@@ -74,8 +63,6 @@ export const FlexWithGap = styled.div`
     cursor: pointer;
   }
   input {
-    width: 0.938rem;
-    height: 0.938rem;
     background: var(--color-three);
     border: 0.766067px solid var(---color-one);
     border-radius: 4.5964px;

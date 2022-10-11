@@ -13,8 +13,8 @@ import IndustrialSofaTable from "../../assets/IndustrialSofaTable.jpg"
 import { Input } from './../Input/styles';
 import { useEffect, useState, useContext } from 'react'
 import NortonIcon from "../../assets/NortonIcon.svg";
-import { BsArrowRightShort } from "react-icons/bs";
 import { StepContext } from "../../Contexts/Steps";
+import { AccordionOrderReview } from "./../AccordionOrderReview/index";
 
 const products = [
   {
@@ -68,7 +68,7 @@ export const ConfirmOrder = () => {
     total = parseFloat(total)
     let infoCoupon: any = sessionStorage.getItem('coupon')
     infoCoupon = JSON.parse(infoCoupon as any)
-    infoCoupon = infoCoupon.value.replace("%", "")
+    infoCoupon = infoCoupon ? infoCoupon.value.replace("%", "") : '0';
     infoCoupon = Number(infoCoupon)
     return ((total * infoCoupon) / 100).toFixed(2);
   }
@@ -120,35 +120,10 @@ export const ConfirmOrder = () => {
 
   return (
     <S.Container>
-      <Accordion
-        sx={{
-          border: "0.383033px solid #B2BCCA",
-          boxShadow: "none",
-          borderRadius: "18.3856px !important",
-        }}
-      >
-        <AccordionSummary
-          expandIcon={<IoIosArrowDown />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography>
-            <S.FlexColumn>
-              <h3>Order Review</h3>
-              <p>2 items in cart ({totalValueProducts})</p>
-            </S.FlexColumn>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            <S.Cardsontainer>
-              {products.map((element: any, index: number) => {
-                return <CardProducts element={element} key={index} />;
-              })}
-            </S.Cardsontainer>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      <AccordionOrderReview
+        products={products}
+        totalValueProducts={totalValueProducts}
+      />
       <Accordion
         sx={{
           border: "0.383033px solid #B2BCCA",
