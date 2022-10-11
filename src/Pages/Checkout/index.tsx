@@ -7,6 +7,7 @@ import { BillingAdress } from "../../Components/BillingAdress"
 import { ShippingMethod } from "../../Components/ShippingMethod"
 import { PaymentMethod } from "../../Components/PaymentMethod"
 import { ConfirmOrder } from "../../Components/ConfirmOrder"
+import { ThanksPage } from "../../Components/ThanksPage"
 
 export const Checkout = () => {
 
@@ -59,7 +60,7 @@ export const Checkout = () => {
       {stepLevel === 1 && <ShippingMethod />}
       {stepLevel === 2 && <PaymentMethod />}
       {stepLevel === 3 && <ConfirmOrder />}
-      {stepLevel === 4 && <>componente</>}
+      {stepLevel === 4 && <ThanksPage />}
     </S.Container>
   );
 }
