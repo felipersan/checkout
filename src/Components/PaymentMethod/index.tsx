@@ -23,7 +23,9 @@ export const PaymentMethod = () => {
 
   const { setStepLevel } = useContext(StepContext);
 
-  const submitFormFn = (values: any, actions: any) => {};
+  const submitFormFn = (values: any, actions: any) => {
+    setStepLevel(3);
+  };
 
   return (
     <Formik
@@ -253,7 +255,7 @@ export const PaymentMethod = () => {
                 <button
                   type="submit"
                   onClick={() => {
-                    if (!radioSelected.creditCard || !isValid) {
+                    if (!radioSelected.creditCard) {
                       setStepLevel(3);
                     }
                   }}

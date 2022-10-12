@@ -7,11 +7,18 @@ import {
 } from "@mui/material";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlinePlusCircle, AiOutlineSend } from "react-icons/ai";
-import { CardProducts } from './../CardProducts/index';
-import IndustrialTable from "../../assets/IndustrialTable.jpg"
-import IndustrialSofaTable from "../../assets/IndustrialSofaTable.jpg"
-import { Input } from './../Input/styles';
-import { useEffect, useState, useContext, Dispatch, SetStateAction, FC } from 'react'
+import { CardProducts } from "./../CardProducts/index";
+import IndustrialTable from "../../assets/IndustrialTable.jpg";
+import IndustrialSofaTable from "../../assets/IndustrialSofaTable.jpg";
+import { Input } from "./../Input/styles";
+import {
+  useEffect,
+  useState,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  FC,
+} from "react";
 import NortonIcon from "../../assets/NortonIcon.svg";
 import { StepContext } from "../../Contexts/Steps";
 import { AccordionOrderReview } from "./../AccordionOrderReview/index";
@@ -34,14 +41,14 @@ const products = [
 
 const coupons = [
   {
-    code: '25OFFCOELHA',
-    value: '25%'
+    code: "25OFFCOELHA",
+    value: "25%",
   },
   {
-    code: '10OFFSANFILIPPO',
-    value: '10%'
-  }
-]
+    code: "10OFFSANFILIPPO",
+    value: "10%",
+  },
+];
 
 interface IProps {
   setTotalOrder: Dispatch<SetStateAction<string>>;
@@ -102,6 +109,10 @@ export const ConfirmOrder: FC<IProps> = ({ setTotalOrder, totalOrder }) => {
     return (subtotal + discount + extra + shipping + tax).toFixed(2);
   };
 
+  const submitFormFn = (values: any, actions: any) => {
+    setStepLevel(4);
+  };
+
   useEffect(() => {
     let totalItems = getTotalValueOfItems();
     setTotalValueProducts("$" + totalItems.toString().replace(".", ","));
@@ -127,7 +138,6 @@ export const ConfirmOrder: FC<IProps> = ({ setTotalOrder, totalOrder }) => {
     setTotalOrder("$" + totalOrderTemp.toString().replace(".", ","));
   }, [totalValueDiscount]);
 
-  const submitFormFn = (values: any, actions: any) => {};
 
   return (
     <Formik
@@ -292,16 +302,7 @@ export const ConfirmOrder: FC<IProps> = ({ setTotalOrder, totalOrder }) => {
             />
             <S.NextContainer>
               <img src={NortonIcon} />
-              <button
-                type="submit"
-                onClick={() => {
-                  if (isValid === false) {
-                    setStepLevel(4);
-                  }
-                }}
-              >
-                Pay {totalOrder}
-              </button>
+              <button type="submit">Pay {totalOrder}</button>
             </S.NextContainer>
           </S.Container>
         </Form>

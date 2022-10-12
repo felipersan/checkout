@@ -12,7 +12,9 @@ import { translateYupErrorMessage } from "../../utils/translateYupErrorMessage";
 export const BillingAdress = () => {
   const { setStepLevel } = useContext(StepContext);
 
-  const submitFormFn = (values: any, actions: any) => {};
+  const submitFormFn = (values: any, actions: any) => {
+    setStepLevel(1);
+  };
 
   return (
     <Formik
@@ -231,14 +233,7 @@ export const BillingAdress = () => {
             </S.ContainerCheckbox>
             <S.NextContainer>
               <img src={NortonIcon} />
-              <button
-                type="submit"
-                onClick={() => {
-                  if (isValid === false) {
-                    setStepLevel(1);
-                  } 
-                }}
-              >
+              <button type="submit">
                 Next
                 <BsArrowRightShort />
               </button>
