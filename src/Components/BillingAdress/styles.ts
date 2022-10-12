@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   width: 37rem;
-  height: 38rem;
+  height: max-content;
   box-shadow: 12px 12px 36px 6px rgba(2, 2, 70, 0.12);
   border-radius: 24.2622px;
   margin-top: 3rem;

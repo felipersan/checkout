@@ -3,7 +3,7 @@ import Check from '../../assets/Check.svg'
 import IndustrialTable from "../../assets/IndustrialTable.jpg";
 import IndustrialSofaTable from "../../assets/IndustrialSofaTable.jpg";
 import { AccordionOrderReview } from '../AccordionOrderReview';
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { StepContext } from "../../Contexts/Steps";
 
 const products = [
@@ -19,8 +19,11 @@ const products = [
   },
 ];
 
-export const ThanksPage = () => {
+interface IProps {
+  totalOrder: string;
+}
 
+export const ThanksPage: FC<IProps> = ({ totalOrder }) => {
   const { setStepLevel } = useContext(StepContext);
 
   return (
@@ -37,7 +40,10 @@ export const ThanksPage = () => {
         Questions? Suggestions? insightful showe thoughts?{" "}
         <span>Shoot us an email</span>.
       </p>
-      <AccordionOrderReview totalValueProducts="30" products={products} />
+      <AccordionOrderReview
+        totalValueProducts={totalOrder}
+        products={products}
+      />
       <button
         onClick={() => {
           setStepLevel(0);
@@ -47,4 +53,4 @@ export const ThanksPage = () => {
       </button>
     </S.Container>
   );
-}
+};

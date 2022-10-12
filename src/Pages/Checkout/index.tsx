@@ -1,17 +1,17 @@
-import { Stepper } from "../../Components/Stepper"
-import * as S from './styles'
-import { Title } from "../../Components/Title"
-import { useContext } from "react"
-import { StepContext } from "../../Contexts/Steps"
-import { BillingAdress } from "../../Components/BillingAdress"
-import { ShippingMethod } from "../../Components/ShippingMethod"
-import { PaymentMethod } from "../../Components/PaymentMethod"
-import { ConfirmOrder } from "../../Components/ConfirmOrder"
-import { ThanksPage } from "../../Components/ThanksPage"
+import { Stepper } from "../../Components/Stepper";
+import * as S from "./styles";
+import { Title } from "../../Components/Title";
+import { useContext, useState } from "react";
+import { StepContext } from "../../Contexts/Steps";
+import { BillingAdress } from "../../Components/BillingAdress";
+import { ShippingMethod } from "../../Components/ShippingMethod";
+import { PaymentMethod } from "../../Components/PaymentMethod";
+import { ConfirmOrder } from "../../Components/ConfirmOrder";
+import { ThanksPage } from "../../Components/ThanksPage";
 
 export const Checkout = () => {
-
-  const { stepLevel, setStepLevel } = useContext(StepContext);
+  const { stepLevel } = useContext(StepContext);
+  const [totalOrder, setTotalOrder] = useState("");
 
   return (
     <S.Container>
@@ -59,8 +59,10 @@ export const Checkout = () => {
       {stepLevel === 0 && <BillingAdress />}
       {stepLevel === 1 && <ShippingMethod />}
       {stepLevel === 2 && <PaymentMethod />}
-      {stepLevel === 3 && <ConfirmOrder />}
-      {stepLevel === 4 && <ThanksPage />}
+      {stepLevel === 3 && (
+        <ConfirmOrder setTotalOrder={setTotalOrder} totalOrder={totalOrder} />
+      )}
+      {stepLevel === 4 && <ThanksPage totalOrder={totalOrder} />}
     </S.Container>
   );
-}
+};
