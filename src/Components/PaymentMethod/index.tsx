@@ -10,7 +10,7 @@ import PadlockIcon from "../../assets/PadlockIcon.svg";
 import { useContext, useState } from "react";
 import { StepContext } from "../../Contexts/Steps";
 import { Input } from "../Input/styles";
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from "formik";
 import { yupSchema } from "./yupSchema";
 import { translateYupErrorMessage } from "../../utils/translateYupErrorMessage";
 
@@ -25,6 +25,31 @@ export const PaymentMethod = () => {
 
   const submitFormFn = (values: any, actions: any) => {
     setStepLevel(3);
+  };
+
+  const handleExpiry = (event: any) => {
+    let input = event.target;
+    input.value = cvvExpiry(input.value);
+  };
+
+  const cvvExpiry = (value: any) => {
+    if (!value) return "";
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d{2})(\d)/, "$1/$2");
+    return value;
+  };
+
+  const handleCardMask = (event: any) => {
+    let input = event.target;
+    input.value = cardMask(input.value);
+  };
+
+  const cardMask = (value: any) => {
+    value = value.replace(/\D/g, "");
+    value = value.replace(/^(\d{4})(\d)/g, "$1 $2");
+    value = value.replace(/^(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3");
+    value = value.replace(/^(\d{4})\s(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3 $4");
+    return value
   };
 
   return (
@@ -90,14 +115,16 @@ export const PaymentMethod = () => {
                         onChange={handleChange}
                         name="name"
                       />
-                      <ErrorMessage
-                        name="name"
-                        render={(msg) => (
-                          <div style={{ color: "red", fontSize: "0.8rem" }}>
-                            {translateYupErrorMessage(msg, "Name")}
-                          </div>
-                        )}
-                      />
+                      {touched && (
+                        <ErrorMessage
+                          name="name"
+                          render={(msg) => (
+                            <div style={{ color: "red", fontSize: "0.8rem" }}>
+                              {translateYupErrorMessage(msg, "Name")}
+                            </div>
+                          )}
+                        />
+                      )}
                     </S.FlexColumn>
                     <S.FlexColumn>
                       <label>Expiry</label>
@@ -112,15 +139,20 @@ export const PaymentMethod = () => {
                         value={values.expiry}
                         onChange={handleChange}
                         name="expiry"
+                        onKeyUp={(event: any) => {
+                          handleExpiry(event);
+                        }}
                       />
-                      <ErrorMessage
-                        name="expiry"
-                        render={(msg) => (
-                          <div style={{ color: "red", fontSize: "0.8rem" }}>
-                            {translateYupErrorMessage(msg, "Expiry")}
-                          </div>
-                        )}
-                      />
+                      {touched && (
+                        <ErrorMessage
+                          name="expiry"
+                          render={(msg) => (
+                            <div style={{ color: "red", fontSize: "0.8rem" }}>
+                              {translateYupErrorMessage(msg, "Expiry")}
+                            </div>
+                          )}
+                        />
+                      )}
                     </S.FlexColumn>
                   </S.GridTwoColumns>
                   <S.GridTwoColumns>
@@ -135,16 +167,21 @@ export const PaymentMethod = () => {
                         padding="0.5rem"
                         value={values.cardNumber}
                         onChange={handleChange}
+                        onKeyUp={(event: any) => {
+                          handleCardMask(event);
+                        }}
                         name="cardNumber"
                       />
-                      <ErrorMessage
-                        name="cardNumber"
-                        render={(msg) => (
-                          <div style={{ color: "red", fontSize: "0.8rem" }}>
-                            {translateYupErrorMessage(msg, "Card Number")}
-                          </div>
-                        )}
-                      />
+                      {touched && (
+                        <ErrorMessage
+                          name="cardNumber"
+                          render={(msg) => (
+                            <div style={{ color: "red", fontSize: "0.8rem" }}>
+                              {translateYupErrorMessage(msg, "Card Number")}
+                            </div>
+                          )}
+                        />
+                      )}
                     </S.FlexColumn>
                     <S.FlexColumn>
                       <label>CVV</label>
@@ -160,14 +197,16 @@ export const PaymentMethod = () => {
                         onChange={handleChange}
                         name="cvv"
                       />
-                      <ErrorMessage
-                        name="cvv"
-                        render={(msg) => (
-                          <div style={{ color: "red", fontSize: "0.8rem" }}>
-                            {translateYupErrorMessage(msg, "CVV")}
-                          </div>
-                        )}
-                      />
+                      {touched && (
+                        <ErrorMessage
+                          name="cvv"
+                          render={(msg) => (
+                            <div style={{ color: "red", fontSize: "0.8rem" }}>
+                              {translateYupErrorMessage(msg, "CVV")}
+                            </div>
+                          )}
+                        />
+                      )}
                     </S.FlexColumn>
                   </S.GridTwoColumns>
                 </div>
@@ -252,17 +291,22 @@ export const PaymentMethod = () => {
               </S.FlexSpaceEvenly>
               <S.NextContainer>
                 <img src={NortonIcon} />
-                <button
-                  type="submit"
-                  onClick={() => {
-                    if (!radioSelected.creditCard) {
+                {radioSelected.creditCard ? (
+                  <button type="submit" >
+                    Next
+                    <BsArrowRightShort />
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    onClick={() => {
                       setStepLevel(3);
-                    }
-                  }}
-                >
-                  Next
-                  <BsArrowRightShort />
-                </button>
+                    }}
+                  >
+                    Next
+                    <BsArrowRightShort />
+                  </button>
+                )}
               </S.NextContainer>
             </>
           </S.Container>

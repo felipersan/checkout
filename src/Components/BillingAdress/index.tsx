@@ -16,6 +16,19 @@ export const BillingAdress = () => {
     setStepLevel(1);
   };
 
+  const handlePhone = (event: any) => {
+    let input = event.target;
+    input.value = phoneMask(input.value);
+  };
+
+  const phoneMask = (value: any) => {
+    if (!value) return "";
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d{2})(\d)/, "($1) $2");
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+    return value;
+  };
+
   return (
     <Formik
       initialValues={{
@@ -48,14 +61,16 @@ export const BillingAdress = () => {
                   onChange={handleChange}
                   name="firstName"
                 />
-                <ErrorMessage
-                  name="firstName"
-                  render={(msg) => (
-                    <div style={{ color: "red", fontSize: "0.8rem" }}>
-                      {translateYupErrorMessage(msg, "First Name")}
-                    </div>
-                  )}
-                />
+                {touched && (
+                  <ErrorMessage
+                    name="firstName"
+                    render={(msg) => (
+                      <div style={{ color: "red", fontSize: "0.8rem" }}>
+                        {translateYupErrorMessage(msg, "First Name")}
+                      </div>
+                    )}
+                  />
+                )}
               </div>
               <div>
                 <label>Last Name</label>
@@ -69,14 +84,16 @@ export const BillingAdress = () => {
                   onChange={handleChange}
                   name="lastName"
                 />
-                <ErrorMessage
-                  name="lastName"
-                  render={(msg) => (
-                    <div style={{ color: "red", fontSize: "0.8rem" }}>
-                      {translateYupErrorMessage(msg, "Last Name")}
-                    </div>
-                  )}
-                />
+                {touched && (
+                  <ErrorMessage
+                    name="lastName"
+                    render={(msg) => (
+                      <div style={{ color: "red", fontSize: "0.8rem" }}>
+                        {translateYupErrorMessage(msg, "Last Name")}
+                      </div>
+                    )}
+                  />
+                )}
               </div>
             </S.GridName>
             <S.ContainerInput>
@@ -91,14 +108,16 @@ export const BillingAdress = () => {
                 onChange={handleChange}
                 name="email"
               />
-              <ErrorMessage
-                name="email"
-                render={(msg) => (
-                  <div style={{ color: "red", fontSize: "0.8rem" }}>
-                    {translateYupErrorMessage(msg, "E-mail")}
-                  </div>
-                )}
-              />
+              {touched && (
+                <ErrorMessage
+                  name="email"
+                  render={(msg) => (
+                    <div style={{ color: "red", fontSize: "0.8rem" }}>
+                      {translateYupErrorMessage(msg, "E-mail")}
+                    </div>
+                  )}
+                />
+              )}
             </S.ContainerInput>
             <S.ContainerInput>
               <label>Street Adress</label>
@@ -112,14 +131,16 @@ export const BillingAdress = () => {
                 onChange={handleChange}
                 name="streetAdress"
               />
-              <ErrorMessage
-                name="streetAdress"
-                render={(msg) => (
-                  <div style={{ color: "red", fontSize: "0.8rem" }}>
-                    {translateYupErrorMessage(msg, "Street Adress")}
-                  </div>
-                )}
-              />
+              {touched && (
+                <ErrorMessage
+                  name="streetAdress"
+                  render={(msg) => (
+                    <div style={{ color: "red", fontSize: "0.8rem" }}>
+                      {translateYupErrorMessage(msg, "Street Adress")}
+                    </div>
+                  )}
+                />
+              )}
             </S.ContainerInput>
             <S.GridName>
               <div>
@@ -138,14 +159,16 @@ export const BillingAdress = () => {
                   <option value="LA">Los Angeles</option>
                   <option value="NY">New York</option>
                 </Select>
-                <ErrorMessage
-                  name="province"
-                  render={(msg) => (
-                    <div style={{ color: "red", fontSize: "0.8rem" }}>
-                      {translateYupErrorMessage(msg, "State/Province")}
-                    </div>
-                  )}
-                />
+                {touched && (
+                  <ErrorMessage
+                    name="province"
+                    render={(msg) => (
+                      <div style={{ color: "red", fontSize: "0.8rem" }}>
+                        {translateYupErrorMessage(msg, "State/Province")}
+                      </div>
+                    )}
+                  />
+                )}
               </div>
               <div>
                 <label>City</label>
@@ -210,6 +233,10 @@ export const BillingAdress = () => {
                   value={values.phone}
                   onChange={handleChange}
                   name="phone"
+                  type={"tel"}
+                  onKeyUp={(event: any) => {
+                    handlePhone(event);
+                  }}
                 />
                 <ErrorMessage
                   name="phone"

@@ -9,5 +9,15 @@ export const translateYupErrorMessage = (msg: string, field: string) => {
   if (msgLower.includes(" must be a `number` type")) {
     return '*O campo deve conter apenas números'
   }
+  if (
+    msgLower.includes("must be at least") ||
+    msgLower.includes("must be less than or equal") ||
+    msgLower.includes("must be greater than or equal")
+  ) {
+    return "*Não atingiu o número mínimo de caracteres";
+  }
+  if (msgLower.includes("must be at most")) {
+    return "*Atingiu o número máximo de caracteres";
+  }
   return msg;
 }
