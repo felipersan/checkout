@@ -5,26 +5,27 @@ export const Container = styled.section`
   height: max-content;
   box-shadow: 12px 12px 36px 6px rgba(2, 2, 70, 0.12);
   border-radius: 24.2622px;
+  margin: auto;
   margin-top: 3rem;
   margin-bottom: 4rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 2rem;
-  h3{
+  h3 {
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
     color: var(--color-one);
   }
-  label{
+  label {
     font-size: 0.8rem;
   }
   @media (max-width: 600px) {
     width: 90%;
     height: 80%;
   }
-`
+`;
 
 export const GridName = styled.div`
   display: grid;

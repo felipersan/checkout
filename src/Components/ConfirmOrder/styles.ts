@@ -4,6 +4,7 @@ export const Container = styled.section`
   width: 37.063rem;
   box-shadow: 12px 12px 36px 6px rgba(2, 2, 70, 0.12);
   border-radius: 24.2622px;
+  margin: auto;
   margin-top: 3rem;
   margin-bottom: 4rem;
   display: flex;

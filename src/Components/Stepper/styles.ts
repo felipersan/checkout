@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  .step{
+  .step {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -12,7 +12,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    .circle{
+    .circle {
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
@@ -20,7 +20,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      .level{
+      .level {
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
@@ -28,7 +28,7 @@ export const Container = styled.div`
       }
     }
   }
-  .stepIn{
+  .stepIn {
     width: 2.323rem;
     height: 2.323rem;
     border-radius: 50%;
@@ -36,18 +36,24 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    svg{
+    svg {
       fill: var(--color-one);
     }
   }
-  .lineIn{
+  .lineIn {
     width: 5rem;
     border: 0.113rem solid !important;
     border-color: var(--color-one) !important;
   }
-  .line{
+  .line {
     width: 5rem;
     border: 0.113rem solid !important;
     border-color: var(--color-two) !important;
   }
-`
+  @media (max-width: 470px) {
+    .lineIn,
+    .line {
+      width: 3rem;
+    }
+  }
+`;
