@@ -25,6 +25,7 @@ import { AccordionOrderReview } from "./../AccordionOrderReview/index";
 import { Formik, Form, ErrorMessage } from "formik";
 import { yupSchema } from "./yupSchema";
 import { translateYupErrorMessage } from "../../utils/translateYupErrorMessage";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
 const products = [
   {
@@ -68,7 +69,7 @@ export const ConfirmOrder: FC<IProps> = ({ setTotalOrder, totalOrder }) => {
     tax: "$3,03",
   });
 
-  const { setStepLevel } = useContext(StepContext);
+  const { setStepLevel, stepLevel } = useContext(StepContext);
 
   const getTotalValueOfItems = () => {
     let counter = 0;
@@ -302,7 +303,16 @@ export const ConfirmOrder: FC<IProps> = ({ setTotalOrder, totalOrder }) => {
             />
             <S.NextContainer>
               <img src={NortonIcon} />
-              <button type="submit">Pay {totalOrder}</button>
+              <div className="areaButtons">
+                <button className="returnButton" onClick={()=>{setStepLevel(stepLevel - 1)}}>
+                  <BsArrowLeftShort />
+                  Return
+                </button>
+              <button 
+              className="submitButton"
+              type="submit">Pay {totalOrder}</button>
+                
+              </div>
             </S.NextContainer>
           </S.Container>
         </Form>

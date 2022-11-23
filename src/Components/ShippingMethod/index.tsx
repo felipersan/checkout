@@ -1,14 +1,16 @@
-import * as S from './styles'
+import * as S from "./styles";
 import { useState, useContext } from "react";
 import NortonIcon from "../../assets/NortonIcon.svg";
-import { StepContext } from '../../Contexts/Steps';
-import { BsArrowRightShort } from 'react-icons/bs';
+import { StepContext } from "../../Contexts/Steps";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
 export const ShippingMethod = () => {
+  const [radioSelected, setRadioSelected] = useState({
+    cheap: true,
+    expensive: false,
+  });
 
-  const [radioSelected, setRadioSelected] = useState({ cheap: true, expensive: false })
-  
-  const { setStepLevel } = useContext(StepContext);
+  const { setStepLevel, stepLevel } = useContext(StepContext);
 
   return (
     <S.Container>
@@ -55,15 +57,22 @@ export const ShippingMethod = () => {
       </S.MethodContainer>
       <S.NextContainer>
         <img src={NortonIcon} />
-        <button
-          onClick={() => {
-            setStepLevel(2);
-          }}
-        >
-          Next
-          <BsArrowRightShort />
-        </button>
+        <div className="areaButtons">
+          <button
+            className="returnButton"
+            onClick={() => {
+              setStepLevel(stepLevel - 1);
+            }}
+          >
+            <BsArrowLeftShort />
+            Return
+          </button>
+          <button onClick={()=>{setStepLevel(stepLevel + 1)}} className="submitButton">
+            Next
+            <BsArrowRightShort />
+          </button>
+        </div>
       </S.NextContainer>
     </S.Container>
   );
-}
+};

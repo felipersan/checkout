@@ -2,7 +2,11 @@ import * as S from "./styles";
 import { Input } from "../Input/styles";
 import { Select } from "../Select";
 import NortonIcon from "../../assets/NortonIcon.svg";
-import { BsArrowRightShort } from "react-icons/bs";
+import {
+  BsArrowLeft,
+  BsArrowLeftShort,
+  BsArrowRightShort,
+} from "react-icons/bs";
 import { useContext } from "react";
 import { StepContext } from "../../Contexts/Steps";
 import { Formik, Form, ErrorMessage } from "formik";
@@ -10,7 +14,7 @@ import { yupSchema } from "./yupSchema";
 import { translateYupErrorMessage } from "../../utils/translateYupErrorMessage";
 
 export const BillingAdress = () => {
-  const { setStepLevel } = useContext(StepContext);
+  const { setStepLevel, stepLevel } = useContext(StepContext);
 
   const submitFormFn = (values: any, actions: any) => {
     setStepLevel(1);
@@ -199,7 +203,7 @@ export const BillingAdress = () => {
             <S.GridName>
               <div>
                 <label>Zip/ Postal Code</label>
-                <Select
+                <Input
                   border={"0.775px solid #D0D5DD"}
                   boxShadow={"0px 0.775px 1.55px rgba(16, 24, 40, 0.05)"}
                   borderRadius={"6.2px"}
@@ -208,11 +212,7 @@ export const BillingAdress = () => {
                   value={values.zip}
                   onChange={handleChange}
                   name="zip"
-                >
-                  <option value="">Select</option>
-                  <option value="LA">03687</option>
-                  <option value="NY">08659</option>
-                </Select>
+                />
                 <ErrorMessage
                   name="zip"
                   render={(msg) => (
@@ -260,10 +260,13 @@ export const BillingAdress = () => {
             </S.ContainerCheckbox>
             <S.NextContainer>
               <img src={NortonIcon} />
-              <button type="submit">
-                Next
-                <BsArrowRightShort />
-              </button>
+              <div className="areaButtons">
+                
+                <button type="submit" className="submitButton">
+                  Next
+                  <BsArrowRightShort />
+                </button>
+              </div>
             </S.NextContainer>
           </S.Container>
         </Form>

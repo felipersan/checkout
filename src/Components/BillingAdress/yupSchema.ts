@@ -5,18 +5,18 @@ export const yupSchema = yup.object().shape({
     .string()
     .min(3)
     .required()
-    .matches(/^[a-z]+$/, "*Não é permitido números nem símbolos"),
+    .matches(/^[a-z/A-Z]+$/, "*Não é permitido números nem símbolos"),
   lastName: yup
     .string()
     .min(3)
     .required()
-    .matches(/^[a-z]+$/, "*Não é permitido números nem símbolos"),
+    .matches(/^[a-z/A-Z/\s]+$/, "*Não é permitido números nem símbolos"),
   email: yup.string().email().required(),
   streetAdress: yup
     .string()
     .min(3)
     .required()
-    .matches(/^[a-z]+$/, "*Não é permitido números nem símbolos"),
+    .matches(/^[a-z/A-Z/\s]+$/, "*Não é permitido números nem símbolos"),
   province: yup.string().required(),
   city: yup.string().required(),
   zip: yup.string().required(),

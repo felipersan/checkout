@@ -103,8 +103,31 @@ export const NextContainer = styled.div`
     width: 6.024rem;
     height: 2.325rem;
   }
-  button {
+  .areaButtons {
     display: flex;
+    gap: 10px;
+    width: 100%;
+    .returnButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.775px solid var(--color-one);
+      box-shadow: 6.2px 6.2px 18.6px rgba(2, 2, 70, 0.15);
+      border-radius: 6.2px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.775rem;
+      color: var(--color-one);
+      height: 2.35rem;
+      flex: 1;
+      cursor: pointer;
+      svg{
+        fill: var(--color-one)
+      }
+    }
+    .submitButton{
+    display: flex;
+    flex: 3;
     align-items: center;
     justify-content: center;
     background: var(--color-one);
@@ -115,9 +138,9 @@ export const NextContainer = styled.div`
     font-weight: 500;
     font-size: 0.775rem;
     color: white;
-    width: 100%;
     height: 2.35rem;
     cursor: pointer;
+  }
   }
   svg {
     height: 1.5rem;

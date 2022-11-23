@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import NortonIcon from "../../assets/NortonIcon.svg";
 import VisaIcon from "../../assets/VisaIcon.svg";
 import StripeIcon from "../../assets/StripeIcon.svg";
@@ -21,7 +21,7 @@ export const PaymentMethod = () => {
     paypall: false,
   });
 
-  const { setStepLevel } = useContext(StepContext);
+  const { setStepLevel, stepLevel } = useContext(StepContext);
 
   const submitFormFn = (values: any, actions: any) => {
     setStepLevel(3);
@@ -49,7 +49,7 @@ export const PaymentMethod = () => {
     value = value.replace(/^(\d{4})(\d)/g, "$1 $2");
     value = value.replace(/^(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3");
     value = value.replace(/^(\d{4})\s(\d{4})\s(\d{4})(\d)/g, "$1 $2 $3 $4");
-    return value
+    return value;
   };
 
   return (
@@ -60,7 +60,7 @@ export const PaymentMethod = () => {
         cardNumber: "",
         cvv: "",
       }}
-      validationSchema={yupSchema}
+      validationSchema={radioSelected.creditCard && yupSchema }
       onSubmit={submitFormFn}
     >
       {({ values, handleChange, touched, isValid }) => (
@@ -291,22 +291,21 @@ export const PaymentMethod = () => {
               </S.FlexSpaceEvenly>
               <S.NextContainer>
                 <img src={NortonIcon} />
-                {radioSelected.creditCard ? (
-                  <button type="submit" >
-                    Next
-                    <BsArrowRightShort />
-                  </button>
-                ) : (
+                <div className="areaButtons">
                   <button
-                    type="submit"
+                    className="returnButton"
                     onClick={() => {
-                      setStepLevel(3);
+                      setStepLevel(stepLevel - 1);
                     }}
                   >
+                    <BsArrowLeftShort />
+                    Return
+                  </button>
+                  <button type="submit" className="submitButton">
                     Next
                     <BsArrowRightShort />
                   </button>
-                )}
+                </div>
               </S.NextContainer>
             </>
           </S.Container>
